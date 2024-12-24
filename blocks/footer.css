@@ -1,0 +1,20 @@
+.footer {
+  max-width: 100%;
+  margin: 67px 0 0;
+}
+
+.footer__copyright {
+  color: #545454;
+  font: normal 400 18px/1.57 "Inter", Arial, sans-serif;
+  margin: 0;
+}
+
+@media screen and (max-width: 631px) {
+  .footer {
+    margin: 48px 0 36px 19px;
+  }
+
+  .footer__copyright {
+    font-size: 14px;
+  }
+}
