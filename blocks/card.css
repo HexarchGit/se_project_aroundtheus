@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.card__image {
+  max-height: 282px;
+}
+
 .card__name {
   color: #000;
   font: normal 900 24px/29px "Inter", Arial, sans-serif;
@@ -27,6 +31,7 @@
   height: 18px;
   width: 24px;
   transition: opacity 0.5s;
+  cursor: pointer;
 }
 
 .card__button-like:hover {
