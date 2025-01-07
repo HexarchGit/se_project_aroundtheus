@@ -24,3 +24,18 @@ let initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+function getCardElement(data) {
+  let cardElement = document
+    .querySelector("#card")
+    .content.querySelector(".card")
+    .cloneNode(true);
+  cardElement.querySelector(".card__image").src = data.link;
+  cardElement.querySelector(".card__image").alt = data.name;
+  cardElement.querySelector(".card__name").textContent = data.name;
+  document.querySelector(".elements__list").append(cardElement);
+}
+
+for (let card of initialCards) {
+  getCardElement(card);
+}

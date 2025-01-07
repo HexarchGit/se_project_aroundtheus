@@ -12,7 +12,9 @@
 }
 
 .card__image {
-  max-height: 282px;
+  object-fit: cover;
+  height: 282px;
+  width: 282px;
 }
 
 .card__name {

@@ -42,8 +42,21 @@
         ></button>
       </section>
       <section class="elements" id="elements">
-        <ul class="elements__list">
+        <template id="card">
           <li class="card">
+            <img class="card__image" />
+            <div class="card__content">
+              <h2 class="card__name"></h2>
+              <button
+                class="card__button-like"
+                type="button"
+                aria-label="like"
+              ></button>
+            </div>
+          </li>
+        </template>
+        <ul class="elements__list">
+          <!-- <li class="card">
             <img
               src="./images/yosemite-valley.png"
               alt="Yosemite valley"
@@ -128,7 +141,7 @@
                 aria-label="like"
               ></button>
             </div>
-          </li>
+          </li> -->
         </ul>
       </section>
     </main>
