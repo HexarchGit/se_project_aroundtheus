@@ -32,7 +32,7 @@
               type="button"
               aria-label="edit"
             ></button>
-            <p class="profile__caption">Explorer</p>
+            <p class="profile__description">Explorer</p>
           </div>
         </div>
         <button
@@ -55,94 +55,7 @@
             </div>
           </li>
         </template>
-        <ul class="elements__list">
-          <!-- <li class="card">
-            <img
-              src="./images/yosemite-valley.png"
-              alt="Yosemite valley"
-              class="card__image"
-            />
-            <div class="card__content">
-              <h2 class="card__name">Yosemite Valley</h2>
-              <button
-                class="card__button-like"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-          <li class="card">
-            <img
-              src="./images/lake-louise.png"
-              alt="Lake louise"
-              class="card__image"
-            />
-            <div class="card__content">
-              <h2 class="card__name">Lake louise</h2>
-              <button
-                class="card__button-like"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-          <li class="card">
-            <img
-              src="./images/bald-mountains.png"
-              alt="Bald mountains"
-              class="card__image"
-            />
-            <div class="card__content">
-              <h2 class="card__name">Bald mountains</h2>
-              <button
-                class="card__button-like"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/latemar.png" alt="Latemar" class="card__image" />
-            <div class="card__content">
-              <h2 class="card__name">Latemar</h2>
-              <button
-                class="card__button-like"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-          <li class="card">
-            <img
-              src="./images/vanoise-national-park.png"
-              alt="Vanoise national park"
-              class="card__image"
-            />
-            <div class="card__content">
-              <h2 class="card__name">Vanoise national park</h2>
-              <button
-                class="card__button-like"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li>
-          <li class="card">
-            <img
-              src="./images/lago-di-braies.png"
-              alt="Lago di braies"
-              class="card__image"
-            />
-            <div class="card__content">
-              <h2 class="card__name">Lago di braies</h2>
-              <button
-                class="card__button-like"
-                type="button"
-                aria-label="like"
-              ></button>
-            </div>
-          </li> -->
-        </ul>
+        <ul class="elements__list"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -156,20 +69,18 @@
           aria-label="close"
         ></button>
         <h2 class="modal__header">Edit profile</h2>
-        <form class="modal__form">
+        <form class="modal__form" name="edit-form">
           <input
             class="modal__input"
             type="text"
-            name="name"
             placeholder="Name"
-            id="name"
+            name="edit-name"
           />
           <input
             class="modal__input"
             type="text"
-            name="caption"
-            id="caption"
             placeholder="About me"
+            name="edit-description"
           />
           <button class="modal__button modal__button_type_save" type="submit">
             Save
