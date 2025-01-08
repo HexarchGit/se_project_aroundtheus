@@ -33,11 +33,11 @@ const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
 function getCardElement(data) {
-  let cardElement = document
+  const cardElement = document
     .querySelector("#card")
     .content.querySelector(".card")
     .cloneNode(true);
-  let cardImage = cardElement.querySelector(".card__image");
+  const cardImage = cardElement.querySelector(".card__image");
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardElement.querySelector(".card__name").textContent = data.name;
@@ -51,20 +51,24 @@ for (let card of initialCards) {
 document
   .querySelector(".profile__button_type_edit")
   .addEventListener("click", function () {
-    modal.classList.add("modal__opened");
+    modal.classList.add("modal_opened");
     modalFormName.value = profileName.textContent;
     modalFormDescription.value = profileDescription.textContent;
   });
 
+function closeModal() {
+  modal.classList.remove("modal_opened");
+}
+
 document
   .querySelector(".modal__button_type_close")
   .addEventListener("click", function () {
-    modal.classList.remove("modal__opened");
+    closeModal();
   });
 
 modalForm.addEventListener("submit", function (event) {
   event.preventDefault();
   profileName.textContent = modalFormName.value;
   profileDescription.textContent = modalFormDescription.value;
-  modal.classList.remove("modal__opened");
+  closeModal();
 });
