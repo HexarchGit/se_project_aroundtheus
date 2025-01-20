@@ -1,17 +1,21 @@
 .modal {
   position: fixed;
+  display: flex;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
   background: rgba(0, 0, 0, 0.5);
   padding: 0 19px;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, visibility linear 0.5s;
 }
 
 .modal_opened {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-in-out, visibility linear 0s 0s;
 }
 
 .modal__container {
@@ -42,6 +46,11 @@
   background: url(../images/button_close.svg) center no-repeat;
   border: none;
   padding: 0;
+  transition: opacity 0.5s;
+}
+
+.modal__button_type_close:hover {
+  opacity: 60%;
 }
 
 .modal__header {
@@ -67,13 +76,35 @@
   height: 28px;
 }
 
-.modal__button_type_save {
+.modal__button_type_submit {
   font: normal 400 18px/1.21 "Inter", Arial, sans-serif;
   margin: 18px 0 0;
   padding: 14px 125px 18px;
   background: #000;
   color: #fff;
   box-sizing: border-box;
+}
+
+.modal__container-image {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.modal__image {
+  object-fit: contain;
+  max-height: 75vh;
+  max-width: 75vw;
+}
+
+.modal__image-name {
+  font: normal 400 12px/1.21 "Inter", Arial, sans-serif;
+  color: #fff;
+  padding: 10px 0 0;
+  margin: 0;
 }
 
 @media screen and (max-width: 631px) {
@@ -97,7 +128,7 @@
     font-size: 18px;
   }
 
-  .modal__button_type_save {
+  .modal__button_type_submit {
     padding: 14px 100px;
     margin: 15px 0 0;
     font-size: 14px;

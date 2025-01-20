@@ -44,11 +44,16 @@
       <section class="elements" id="elements">
         <template id="card">
           <li class="card">
+            <button
+              class="card__button card__button-delete"
+              type="button"
+              aria-label="delete"
+            ></button>
             <img class="card__image" />
             <div class="card__content">
               <h2 class="card__name"></h2>
               <button
-                class="card__button-like"
+                class="card__button card__button-like"
                 type="button"
                 aria-label="like"
               ></button>
@@ -61,12 +66,13 @@
     <footer class="footer">
       <p class="footer__copyright">© 2024 Around The U.S.</p>
     </footer>
-    <div class="modal">
+    <div class="modal" id="modal-edit">
       <div class="modal__container">
         <button
           class="modal__button modal__button_type_close"
           type="button"
           aria-label="close"
+          id="modal-edit-close"
         ></button>
         <h2 class="modal__header">Edit profile</h2>
         <form class="modal__form" name="edit-form">
@@ -82,10 +88,48 @@
             placeholder="About me"
             name="edit-description"
           />
-          <button class="modal__button modal__button_type_save" type="submit">
+          <button class="modal__button modal__button_type_submit" type="submit">
             Save
           </button>
         </form>
+      </div>
+    </div>
+    <div class="modal" id="modal-add">
+      <div class="modal__container">
+        <button
+          class="modal__button modal__button_type_close"
+          type="button"
+          aria-label="close"
+        ></button>
+        <h2 class="modal__header">New Place</h2>
+        <form class="modal__form" name="add-form">
+          <input
+            class="modal__input"
+            type="text"
+            placeholder="Title"
+            name="add-name"
+          />
+          <input
+            class="modal__input"
+            type="text"
+            placeholder="Image link"
+            name="add-description"
+          />
+          <button class="modal__button modal__button_type_submit" type="submit">
+            Create
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="modal-image">
+      <div class="modal__container-image">
+        <button
+          class="modal__button modal__button_type_close"
+          type="button"
+          aria-label="close"
+        ></button>
+        <img src="" alt="" class="modal__image" />
+        <p class="modal__image-name"></p>
       </div>
     </div>
     <script src="./scripts/index.js"></script>
