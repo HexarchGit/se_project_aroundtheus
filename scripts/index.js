@@ -25,8 +25,6 @@ const initialCards = [
   },
 ];
 const cardsList = document.querySelector(".elements__list");
-initialCards.forEach((card) => cardsList.append(getCardElement(card)));
-
 const modalEdit = document.querySelector("#modal-edit");
 const modalEditForm = document.forms["edit-form"];
 const modalEditFormName = modalEditForm.elements["edit-name"];
@@ -37,7 +35,7 @@ const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const modalImage = document.querySelector("#modal-image");
 
-function getCardElement(data) {
+function generateCardElement(data) {
   const cardElement = document
     .querySelector("#card")
     .content.querySelector(".card")
@@ -48,6 +46,23 @@ function getCardElement(data) {
   cardElement.querySelector(".card__name").textContent = data.name;
   return cardElement;
 }
+
+function imageClickHandler(item) {
+  const image = modalImage.querySelector(".modal__image");
+  image.src = item.src;
+  image.alt = item.alt;
+  modalImage.querySelector(".modal__image-name").textContent = item.alt;
+  modalImage.classList.add("modal_opened");
+}
+
+function addCardWithListener(data) {
+  cardsList.prepend(generateCardElement(data));
+  cardsList
+    .querySelector(".card__image")
+    .addEventListener("click", (event) => imageClickHandler(event.target));
+}
+
+initialCards.forEach((cardData) => addCardWithListener(cardData));
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
@@ -82,11 +97,11 @@ document
 
 modalAddForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const card = {
+  const cardData = {
     name: modalAddForm.elements["add-name"].value,
     link: modalAddForm.elements["add-description"].value,
   };
-  cardsList.prepend(getCardElement(card));
+  addCardWithListener(cardData);
   closeModal(modalAddForm);
 });
 
@@ -100,16 +115,4 @@ Array.from(document.querySelectorAll(".card__button-delete")).forEach((item) =>
   item.addEventListener("click", (event) =>
     event.target.closest(".card").remove()
   )
-);
-
-function imageClickHandler(item) {
-  const image = modalImage.querySelector(".modal__image");
-  image.src = item.src;
-  image.alt = item.alt;
-  modalImage.querySelector(".modal__image-name").textContent = item.alt;
-  modalImage.classList.add("modal_opened");
-}
-
-Array.from(cardsList.children).forEach((item) =>
-  item.addEventListener("click", (event) => imageClickHandler(event.target))
 );
