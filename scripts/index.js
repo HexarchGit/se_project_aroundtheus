@@ -55,14 +55,25 @@ function imageClickHandler(item) {
   modalImage.classList.add("modal_opened");
 }
 
-function addCardWithListener(data) {
+function addCard(data) {
   cardsList.prepend(generateCardElement(data));
   cardsList
     .querySelector(".card__image")
     .addEventListener("click", (event) => imageClickHandler(event.target));
+  cardsList
+    .querySelector(".card__button-like")
+    .addEventListener("click", (event) =>
+      event.target.classList.toggle("card__button-like_state_active")
+    );
+
+  cardsList
+    .querySelector(".card__button-delete")
+    .addEventListener("click", (event) =>
+      event.target.closest(".card").remove()
+    );
 }
 
-initialCards.forEach((cardData) => addCardWithListener(cardData));
+initialCards.forEach((cardData) => addCard(cardData));
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
@@ -88,7 +99,7 @@ modalEditForm.addEventListener("submit", function (event) {
   event.preventDefault();
   profileName.textContent = modalEditFormName.value;
   profileDescription.textContent = modalEditFormDescription.value;
-  closeModal(modalEditForm);
+  closeModal(modalEdit);
 });
 
 document
@@ -101,18 +112,8 @@ modalAddForm.addEventListener("submit", function (event) {
     name: modalAddForm.elements["add-name"].value,
     link: modalAddForm.elements["add-description"].value,
   };
-  addCardWithListener(cardData);
-  closeModal(modalAddForm);
+  addCard(cardData);
+  closeModal(modalAdd);
+  modalAddForm.elements["add-name"].value = "";
+  modalAddForm.elements["add-description"].value = "";
 });
-
-Array.from(document.querySelectorAll(".card__button-like")).forEach((item) =>
-  item.addEventListener("click", (event) =>
-    event.target.classList.toggle("card__button-like_state_active")
-  )
-);
-
-Array.from(document.querySelectorAll(".card__button-delete")).forEach((item) =>
-  item.addEventListener("click", (event) =>
-    event.target.closest(".card").remove()
-  )
-);
