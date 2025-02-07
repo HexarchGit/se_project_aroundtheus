@@ -63,26 +63,57 @@
   flex-direction: column;
   border: none;
   gap: 30px;
-  padding: 54px 0 0;
+  padding: 48px 0 0;
+}
+
+.modal__form-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .modal__input {
   font: normal 400 14px/1.21 "Inter", Arial, sans-serif;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 0 0 13px;
   border: none;
   border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
   height: 28px;
 }
 
+.modal__input_type_error {
+  border-bottom-color: #ff0000;
+}
+
+.modal__error {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  font: normal 400 12px/1.21 "Inter", Arial, sans-serif;
+  color: #ff0000;
+  opacity: 0;
+}
+
+.modal__error_active {
+  opacity: 1;
+}
+
 .modal__button_type_submit {
   font: normal 400 18px/1.21 "Inter", Arial, sans-serif;
   margin: 18px 0 0;
-  padding: 14px 125px 18px;
+  padding: 14px 125px;
   background: #000;
   color: #fff;
   box-sizing: border-box;
+  border: #000 1px solid;
+  border-radius: 2px;
+}
+
+.modal__button_disabled {
+  color: rgba(0, 0, 0, 0.2);
+  background: none;
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .modal__container-image {

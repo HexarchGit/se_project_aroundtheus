@@ -75,19 +75,32 @@
           id="modal-edit-close"
         ></button>
         <h2 class="modal__header">Edit profile</h2>
-        <form class="modal__form" name="edit-form">
-          <input
-            class="modal__input"
-            type="text"
-            placeholder="Name"
-            name="edit-name"
-          />
-          <input
-            class="modal__input"
-            type="text"
-            placeholder="About me"
-            name="edit-description"
-          />
+        <form class="modal__form" name="edit-form" novalidate>
+          <label class="modal__form-field">
+            <input
+              class="modal__input"
+              type="text"
+              placeholder="Name"
+              name="edit-name"
+              id="input-name"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="modal__error input-name-error">Test</span>
+          </label>
+          <label class="modal__form-field"
+            ><input
+              class="modal__input"
+              type="text"
+              placeholder="About me"
+              name="edit-description"
+              id="input-description"
+              minlength="2"
+              maxlength="200"
+              required />
+            <span class="modal__error input-description-error"></span
+          ></label>
           <button class="modal__button modal__button_type_submit" type="submit">
             Save
           </button>
@@ -102,19 +115,29 @@
           aria-label="close"
         ></button>
         <h2 class="modal__header">New Place</h2>
-        <form class="modal__form" name="add-form">
-          <input
-            class="modal__input"
-            type="text"
-            placeholder="Title"
-            name="add-name"
-          />
-          <input
-            class="modal__input"
-            type="text"
-            placeholder="Image link"
-            name="add-description"
-          />
+        <form class="modal__form" name="add-form" novalidate>
+          <label class="modal__form-field"
+            ><input
+              class="modal__input"
+              type="text"
+              placeholder="Title"
+              name="add-name"
+              id="add-name"
+              minlength="1"
+              maxlength="30"
+              required />
+            <span class="modal__error add-name-error"></span
+          ></label>
+          <label class="modal__form-field"
+            ><input
+              class="modal__input"
+              type="url"
+              placeholder="Image link"
+              name="add-link"
+              id="add-link"
+              required />
+            <span class="modal__error add-link-error"></span
+          ></label>
           <button class="modal__button modal__button_type_submit" type="submit">
             Create
           </button>
@@ -133,5 +156,6 @@
       </div>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
