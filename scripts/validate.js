@@ -1,4 +1,4 @@
-const validateConfigObject = {
+const validateFormConfigObject = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button_type_submit",
@@ -34,21 +34,21 @@ const hasInvalidInput = (inputList) => {
   return inputList.some((input) => !input.validity.valid);
 };
 
-const enableButton = (button) => {
+const disableButton = (button) => {
   button.element.classList.add(button.inactiveClass);
   button.element.disabled = true;
 };
 
-const disableButton = (button) => {
+const enableButton = (button) => {
   button.element.classList.remove(button.inactiveClass);
   button.element.disabled = false;
 };
 
 const toggleButton = (inputList, button) => {
-  hasInvalidInput(inputList) ? enableButton(button) : disableButton(button);
+  hasInvalidInput(inputList) ? disableButton(button) : enableButton(button);
 };
 
-const validate = (validationParams) => {
+const validateForm = (validationParams) => {
   checkInputValidity(
     validationParams.form,
     validationParams.input,
@@ -62,18 +62,17 @@ const setInputsListener = (validationParams) => {
   validationParams.inputsList.forEach((input) => {
     input.addEventListener("input", () => {
       validationParams.input = input;
-      validate(validationParams);
+      validateForm(validationParams);
     });
   });
-  const openButtons = Array.from(document.querySelectorAll(".profile__button"));
-  openButtons.forEach((button) =>
-    button.addEventListener("click", () => {
-      validationParams.inputsList.forEach((input) => {
-        validationParams.input = input;
-        validate(validationParams);
-      });
-    })
-  );
+
+  validationParams.form.addEventListener("reset", () => {
+    disableButton(validationParams.buttonElement);
+    toggleButton(validationParams.inputsList, validationParams.buttonElement);
+    validationParams.inputsList.forEach((input) =>
+      hideError(validationParams.form, input, validationParams.error)
+    );
+  });
 };
 
 const enableValidation = (config) => {
@@ -94,4 +93,4 @@ const enableValidation = (config) => {
   });
 };
 
-enableValidation(validateConfigObject);
+enableValidation(validateFormConfigObject);
