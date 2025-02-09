@@ -46,11 +46,6 @@ const closeModal = (modal) => {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", escapeHandler);
   modal.removeEventListener("mousedown", closeHandler);
-  modal.querySelector("form").reset();
-  if (modal === modalEdit) {
-    modalEditFormName.value = profileName.textContent;
-    modalEditFormDescription.value = profileDescription.textContent;
-  }
 };
 const openModal = (modal) => {
   modal.classList.add("modal_opened");
@@ -124,11 +119,7 @@ const addCard = (data) => cardsList.prepend(generateCardElement(data));
 const initializeCards = (initialData) =>
   initialData.forEach((cardData) => addCard(cardData));
 
-buttonEdit.addEventListener("click", () => {
-  openModal(modalEdit);
-  modalEditFormName.value = profileName.textContent;
-  modalEditFormDescription.value = profileDescription.textContent;
-});
+buttonEdit.addEventListener("click", () => openModal(modalEdit));
 
 modalEditForm.addEventListener(
   "submit",
