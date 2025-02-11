@@ -67,7 +67,7 @@ const setInputsListener = (validationParams) => {
   });
 
   validationParams.form.addEventListener("reset", () => {
-    disableButton(validationParams.buttonElement);
+    toggleButton(validationParams.inputsList, validationParams.buttonElement);
     validationParams.inputsList.forEach((input) =>
       hideError(validationParams.form, input, validationParams.error)
     );

@@ -116,10 +116,10 @@ const initializeCards = (initialData) =>
   initialData.forEach((cardData) => addCard(cardData));
 
 buttonEdit.addEventListener("click", () => {
+  modalEditForm.reset();
+  modalEditFormName.value = profileName.textContent;
+  modalEditFormDescription.value = profileDescription.textContent;
   openModal(modalEdit);
-  // this value rewriting on each click on edit button without resetting form and clearing errors. If closing without reset, on next modal open still shown modal__error.
-  // modalEditFormName.value = profileName.textContent;
-  // modalEditFormDescription.value = profileDescription.textContent;
 });
 
 modalEditForm.addEventListener(
@@ -133,7 +133,10 @@ modalEditForm.addEventListener(
   true
 );
 
-buttonAdd.addEventListener("click", () => openModal(modalAdd));
+buttonAdd.addEventListener("click", () => {
+  modalAddForm.reset();
+  openModal(modalAdd);
+});
 
 modalAddForm.addEventListener(
   "submit",
@@ -150,7 +153,10 @@ modalAddForm.addEventListener(
   true
 );
 
-modalEditFormName.value = profileName.textContent;
-modalEditFormDescription.value = profileDescription.textContent;
+// I saw my task as "make save button active on opening edit and disabled on opening add", based on showcase video.
+// Without this on first opening, save button will be disabled, because in reset event will be no input values.
+// But I agree that it bring consistency in opening edit form, making button disabled on each open. If this is how it's supposed to be, I'll change initial input values.
+// modalEditFormName.value = profileName.textContent;
+// modalEditFormDescription.value = profileDescription.textContent;
 
 initializeCards(initialCards);
