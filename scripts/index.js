@@ -116,10 +116,10 @@ const initializeCards = (initialData) =>
   initialData.forEach((cardData) => addCard(cardData));
 
 buttonEdit.addEventListener("click", () => {
+  modalEditForm.reset();
+  modalEditFormName.value = profileName.textContent;
+  modalEditFormDescription.value = profileDescription.textContent;
   openModal(modalEdit);
-  // this value rewriting on each click on edit button without resetting form and clearing errors. If closing without reset, on next modal open still shown modal__error.
-  // modalEditFormName.value = profileName.textContent;
-  // modalEditFormDescription.value = profileDescription.textContent;
 });
 
 modalEditForm.addEventListener(
