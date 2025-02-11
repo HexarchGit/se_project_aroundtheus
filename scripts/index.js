@@ -40,8 +40,6 @@ const modalAddForm = document.forms["add-form"];
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
-const resetForm = (form) => form.reset;
-
 const closeModal = (modal) => {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", escapeHandler);
@@ -67,8 +65,6 @@ const closeHandler = (event) => {
     event.target == modal
   ) {
     closeModal(modal);
-
-    modal.removeEventListener("click", closeHandler);
   }
 };
 
@@ -119,7 +115,12 @@ const addCard = (data) => cardsList.prepend(generateCardElement(data));
 const initializeCards = (initialData) =>
   initialData.forEach((cardData) => addCard(cardData));
 
-buttonEdit.addEventListener("click", () => openModal(modalEdit));
+buttonEdit.addEventListener("click", () => {
+  openModal(modalEdit);
+  // this value rewriting on each click on edit button without resetting form and clearing errors. If closing without reset, on next modal open still shown modal__error.
+  // modalEditFormName.value = profileName.textContent;
+  // modalEditFormDescription.value = profileDescription.textContent;
+});
 
 modalEditForm.addEventListener(
   "submit",
