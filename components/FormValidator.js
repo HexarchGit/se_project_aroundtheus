@@ -56,7 +56,7 @@ export default class FormValidator {
     });
   }
 
-  validate() {
+  validateButton() {
     this._toggleButton();
   }
 
