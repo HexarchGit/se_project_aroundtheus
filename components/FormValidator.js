@@ -56,8 +56,9 @@ export default class FormValidator {
     });
   }
 
-  validateButton() {
+  resetValidation() {
     this._toggleButton();
+    this._inputsList.forEach((input) => this._hideError(input));
   }
 
   enableValidation() {
