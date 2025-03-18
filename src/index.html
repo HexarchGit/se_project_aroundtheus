@@ -10,18 +10,21 @@
     <meta name="author" content="Sergei Sushko" />
     <meta name="keywords" content="Tripleten, Travel, Sergei Sushko" />
     <title>TT Around The U.S.</title>
-    <link rel="stylesheet" href="pages/index.css" />
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="./images/favicon.ico" />
   </head>
   <body class="page">
     <header class="header">
-      <img src="./images/logo.svg" alt="Around U.S." class="header__logo" />
+      <img
+        src="<%=require('./images/logo.svg')%>"
+        alt="Around U.S."
+        class="header__logo"
+      />
     </header>
     <main class="content">
       <section class="profile" id="profile">
         <div class="profile__info">
           <img
-            src="./images/profile__photo.png"
+            src="<%=require('./images/profile__photo.png')%>"
             alt="Avatar"
             class="profile__photo"
           />
@@ -82,24 +85,24 @@
               type="text"
               placeholder="Name"
               name="edit-name"
-              id="input-name"
+              id="edit-name"
               minlength="2"
               maxlength="40"
               required
             />
-            <span class="modal__error input-name-error">Test</span>
+            <span class="modal__error edit-name-error">Test</span>
           </label>
           <label class="modal__form-field"
             ><input
               class="modal__input"
               type="text"
               placeholder="About me"
-              name="edit-description"
-              id="input-description"
+              name="edit-job"
+              id="edit-job"
               minlength="2"
               maxlength="200"
               required />
-            <span class="modal__error input-description-error"></span
+            <span class="modal__error edit-job-error"></span
           ></label>
           <button class="modal__button modal__button_type_submit" type="submit">
             Save
@@ -155,6 +158,5 @@
         <p class="modal__image-name"></p>
       </div>
     </div>
-    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>
