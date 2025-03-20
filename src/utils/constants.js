@@ -40,6 +40,9 @@ const selectors = {
   nameSelector: ".profile__name",
   jobSelector: ".profile__description",
   popupImageContainer: "#modal-image-container",
+  cardsContainer: ".elements__list",
+  buttonEditSelector: ".profile__button_type_edit",
+  buttonAddSelector: ".profile__button_type_add",
 };
 
 export { initialData, validateFormConfigObject, selectors };

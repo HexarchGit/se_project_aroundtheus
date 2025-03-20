@@ -1,6 +1,6 @@
-# Project 3: Around The U.S.
+# Project: Around The U.S.
 
-This is the third project of the Software Engineering program at TripleTen. It was created using HTML and CSS, based on the Figma design, and adapted to variety of screens, starting from mobile-like 320px.
+This is the project of the Software Engineering program at TripleTen. It was created using HTML and CSS, based on the Figma design, and adapted to variety of screens, starting from mobile-like 320px.
 
 ## Project features
 
@@ -10,7 +10,9 @@ This is the third project of the Software Engineering program at TripleTen. It w
 - Flat BEM file structure
 - Smooth CSS transitions of elements
 - Adaptive design
-- JavaScript
+- Modular JavaScript
+- IIFE, arguments dectructuring
+- Project building with webpack
 
 ## Plan on improving the project
 
