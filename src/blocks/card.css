@@ -37,6 +37,11 @@
   object-fit: cover;
   height: 282px;
   width: 282px;
+  transition: opacity 0.5s;
+}
+
+.card__placeholder {
+  opacity: 0;
 }
 
 .card__name {

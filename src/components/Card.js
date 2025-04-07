@@ -1,6 +1,6 @@
 export default class Card {
   constructor(
-    { name, link, _id },
+    { name, link, _id, isLiked },
     cardSelector,
     handleImageClick,
     handleApiCallback,
@@ -13,6 +13,7 @@ export default class Card {
     this._handleImageClick = handleImageClick;
     this._handleApiCallback = handleApiCallback;
     this._handleDeleteButton = handleDeleteButton;
+    this._liked = isLiked;
   }
 
   _handleLikeButton = (event) => {
@@ -40,8 +41,7 @@ export default class Card {
           this._handleApiCallback({
             action: "DELETE",
             endpoint: `cards/${this._cardId}`,
-          });
-          this._cardElement.remove();
+          }).then(() => this._cardElement.remove());
         }
       })
       .catch((error) => console.error(error));
@@ -67,9 +67,13 @@ export default class Card {
       .content.querySelector(".card")
       .cloneNode(true);
     this._cardElement.querySelector(".card__name").textContent = this._name;
+    this._likeButton = this._cardElement.querySelector(".card__button-like");
     this._image = this._cardElement.querySelector(".card__image");
+    this._image.onload = this._image.classList.remove("card__placeholder");
     this._image.src = this._link;
     this._image.alt = this._name;
+    if (this._liked)
+      this._likeButton.classList.add("card__button-like_state_active");
     this._setEventListeners();
     return this._cardElement;
   }

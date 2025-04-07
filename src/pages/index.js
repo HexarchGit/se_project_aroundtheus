@@ -49,7 +49,7 @@ import Api from "../components/API.js";
   const popupConfirm = new PopupWithConfimration(confirmPopupSelector);
   popupConfirm.setEventListeners();
 
-  const handleCardDelete = () => {
+  const handleCardDelete = (apiCall) => {
     return popupConfirm.open();
   };
 
@@ -113,8 +113,7 @@ import Api from "../components/API.js";
     };
     return tripletenApi
       .editUser(inputData)
-      .then(() => userInfo.setUserInfo(inputData))
-      .catch((error) => console.error(error));
+      .then(() => userInfo.setUserInfo(inputData));
   };
 
   const handlePopupAdd = (inputs) => {
@@ -125,8 +124,7 @@ import Api from "../components/API.js";
     };
     return tripletenApi
       .addCard(inputData)
-      .then(() => cardList.addItem(createCard(inputData)))
-      .catch((error) => console.error(error));
+      .then((result) => cardList.addItem(createCard(result)));
   };
 
   const handlePopupEditAvatar = (inputs) => {
@@ -134,8 +132,7 @@ import Api from "../components/API.js";
     const inputData = { name, about, avatar: inputs["edit-avatar"] };
     return tripletenApi
       .editUser(inputData)
-      .then(() => userInfo.setUserInfo(inputData))
-      .catch((error) => console.error(error));
+      .then(() => userInfo.setUserInfo(inputData));
   };
 
   const popupEdit = new PopupWithForm({
