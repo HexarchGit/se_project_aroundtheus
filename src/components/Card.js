@@ -1,17 +1,50 @@
 export default class Card {
-  constructor({ name, link }, cardSelector, handleImageClick) {
+  constructor(
+    { name, link, _id },
+    cardSelector,
+    handleImageClick,
+    handleApiCallback,
+    handleDeleteButton
+  ) {
     this._name = name;
     this._link = link;
+    this._cardId = _id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleApiCallback = handleApiCallback;
+    this._handleDeleteButton = handleDeleteButton;
   }
 
   _handleLikeButton = (event) => {
-    event.target.classList.toggle("card__button-like_state_active");
+    if (event.target.classList.contains("card__button-like_state_active")) {
+      this._callbackOptions = {
+        action: "DELETE",
+        endpoint: `cards/${this._cardId}/likes`,
+      };
+    }
+    this._callbackOptions = {
+      action: "PUT",
+      endpoint: `cards/${this._cardId}/likes`,
+    };
+    this._handleApiCallback(this._callbackOptions)
+      .then(() =>
+        event.target.classList.toggle("card__button-like_state_active")
+      )
+      .catch((error) => console.error(error));
   };
 
-  _handleDeleteButton = () => {
-    this._cardElement.remove();
+  _handleDeletion = () => {
+    this._handleDeleteButton()
+      .then((confirmation) => {
+        if (confirmation) {
+          this._handleApiCallback({
+            action: "DELETE",
+            endpoint: `cards/${this._cardId}`,
+          });
+          this._cardElement.remove();
+        }
+      })
+      .catch((error) => console.error(error));
   };
 
   _setEventListeners() {
@@ -21,7 +54,7 @@ export default class Card {
 
     this._cardElement
       .querySelector(".card__button-delete")
-      .addEventListener("click", this._handleDeleteButton);
+      .addEventListener("click", this._handleDeletion);
 
     this._image.addEventListener("click", () => {
       this._handleImageClick({ name: this._name, link: this._link });

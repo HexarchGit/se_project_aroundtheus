@@ -23,19 +23,26 @@
     <main class="content">
       <section class="profile" id="profile">
         <div class="profile__info">
-          <img
-            src="<%=require('./images/profile__photo.png')%>"
-            alt="Avatar"
-            class="profile__photo"
-          />
+          <div class="profile__avatar">
+            <img
+              src="<%=require('./images/avatar_placeholder.svg')%>"
+              alt="Avatar"
+              class="profile__photo profile__photo_placeholder"
+            />
+            <img
+              src="<%=require('./images/avatar_edit.svg')%>"
+              alt="Edit"
+              class="profile__edit-icon"
+            />
+          </div>
           <div class="profile__content">
-            <h1 class="profile__name">Jacques Cousteau</h1>
+            <h1 class="profile__name"></h1>
             <button
               class="profile__button profile__button_type_edit"
               type="button"
               aria-label="edit"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description"></p>
           </div>
         </div>
         <button
@@ -69,6 +76,36 @@
     <footer class="footer">
       <p class="footer__copyright">© 2024 Around The U.S.</p>
     </footer>
+    <div class="modal" id="modal-edit-avatar">
+      <div class="modal__container">
+        <button
+          class="modal__button modal__button_type_close"
+          type="button"
+          aria-label="close"
+        ></button>
+        <h2 class="modal__header">Change profile picture</h2>
+        <form class="modal__form" name="edit-avatar-form" novalidate>
+          <label class="modal__form-field"
+            ><input
+              class="modal__input"
+              type="url"
+              placeholder="Link to picture"
+              name="edit-avatar"
+              id="edit-avatar"
+              required />
+            <span class="modal__error edit-avatar-error"></span
+          ></label>
+
+          <button
+            class="modal__button modal__button_type_submit"
+            type="submit"
+            aria-label="submit"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
     <div class="modal" id="modal-edit">
       <div class="modal__container">
         <button
@@ -104,7 +141,11 @@
               required />
             <span class="modal__error edit-job-error"></span
           ></label>
-          <button class="modal__button modal__button_type_submit" type="submit">
+          <button
+            class="modal__button modal__button_type_submit"
+            type="submit"
+            aria-label="submit"
+          >
             Save
           </button>
         </form>
@@ -126,7 +167,7 @@
               placeholder="Title"
               name="add-name"
               id="add-name"
-              minlength="1"
+              minlength="2"
               maxlength="30"
               required />
             <span class="modal__error add-name-error"></span
@@ -141,7 +182,11 @@
               required />
             <span class="modal__error add-link-error"></span
           ></label>
-          <button class="modal__button modal__button_type_submit" type="submit">
+          <button
+            class="modal__button modal__button_type_submit"
+            type="submit"
+            aria-label="submit"
+          >
             Create
           </button>
         </form>
@@ -156,6 +201,24 @@
         ></button>
         <img src="" alt="" class="modal__image" />
         <p class="modal__image-name"></p>
+      </div>
+    </div>
+    <div class="modal" id="modal-confirm">
+      <div class="modal__container">
+        <button
+          class="modal__button modal__button_type_close"
+          type="button"
+          aria-label="close"
+        ></button>
+        <h2 class="modal__header">Are you sure?</h2>
+        <button
+          class="modal__button modal__button_type_submit"
+          type="button"
+          aria-label="confirm"
+          id="button-confirm"
+        >
+          Yes
+        </button>
       </div>
     </div>
   </body>
