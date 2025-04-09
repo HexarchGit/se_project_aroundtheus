@@ -22,11 +22,12 @@ export default class Card {
         action: "DELETE",
         endpoint: `cards/${this._cardId}/likes`,
       };
+    } else {
+      this._callbackOptions = {
+        action: "PUT",
+        endpoint: `cards/${this._cardId}/likes`,
+      };
     }
-    this._callbackOptions = {
-      action: "PUT",
-      endpoint: `cards/${this._cardId}/likes`,
-    };
     this._handleApiCallback(this._callbackOptions)
       .then(() =>
         event.target.classList.toggle("card__button-like_state_active")
@@ -35,14 +36,12 @@ export default class Card {
   };
 
   _handleDeletion = () => {
-    this._handleDeleteButton()
-      .then((confirmation) => {
-        if (confirmation) {
-          this._handleApiCallback({
-            action: "DELETE",
-            endpoint: `cards/${this._cardId}`,
-          }).then(() => this._cardElement.remove());
-        }
+    this._handleDeleteButton({
+      action: "DELETE",
+      endpoint: `cards/${this._cardId}`,
+    })
+      .then((result) => {
+        if (result) this._cardElement.remove();
       })
       .catch((error) => console.error(error));
   };
@@ -69,7 +68,7 @@ export default class Card {
     this._cardElement.querySelector(".card__name").textContent = this._name;
     this._likeButton = this._cardElement.querySelector(".card__button-like");
     this._image = this._cardElement.querySelector(".card__image");
-    this._image.onload = this._image.classList.remove("card__placeholder");
+    // this._image.onload = this._image.classList.remove("card__placeholder");
     this._image.src = this._link;
     this._image.alt = this._name;
     if (this._liked)

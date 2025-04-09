@@ -13,9 +13,6 @@ export default class UserInfo {
     this._name.textContent = name;
     this._about.textContent = about;
     if (avatar) {
-      this._avatarPhoto.onload = () => {
-        this._avatarPhoto.classList.remove("profile__photo_placeholder");
-      };
       this._avatarPhoto.src = avatar;
     }
   }

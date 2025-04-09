@@ -12,10 +12,11 @@ export default class PopupWithConfimration extends Popup {
     return new Promise((resolve) => {
       this._isConfirmed = false;
       this._resolve = resolve;
+      this._buttonText = this._confirmButton.textContent;
       this._handleConfirm = () => {
         this._isConfirmed = true;
+        this._confirmButton.textContent = "Saving...";
         this._resolve(true);
-        this.close();
       };
       this._confirmButton.addEventListener("click", this._handleConfirm, {
         once: true,
@@ -28,6 +29,8 @@ export default class PopupWithConfimration extends Popup {
       this._resolve(false);
       this._resolve = null;
     }
+    if (this._confirmButton.textContent !== this._buttonText)
+      this._confirmButton.textContent = this._buttonText;
     super.close();
   }
 }
