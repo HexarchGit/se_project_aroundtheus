@@ -37,6 +37,12 @@
   object-fit: cover;
   height: 282px;
   width: 282px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.card__image_state_loaded {
+  opacity: 1;
 }
 
 .card__name {

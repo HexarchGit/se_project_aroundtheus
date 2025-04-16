@@ -13,11 +13,13 @@ This is the project of the Software Engineering program at TripleTen. It was cre
 - Modular JavaScript
 - IIFE, arguments dectructuring
 - Project building with webpack
+- Work with API
 
 ## Plan on improving the project
 
 - Make able to edit photos, not just add new and remove old.
 - Make some database for storing site data after changing.
+- Add a feature to mass-upload card photos
 
 [Link to GitHub Pages](https://HexarchGit.github.io/se_project_aroundtheus)
-[Link to video description of the project](https://drive.google.com/file/d/1Nzf_4yK2oXVRSc4DYpfTkHPot_YoysnH/view?usp=sharing)
+[Link to video description of the project, demonstrating flexibility](https://drive.google.com/file/d/1Nzf_4yK2oXVRSc4DYpfTkHPot_YoysnH/view?usp=sharing)

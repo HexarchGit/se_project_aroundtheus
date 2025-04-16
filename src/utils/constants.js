@@ -37,12 +37,21 @@ const validateFormConfigObject = {
 const selectors = {
   editPopupSelector: "#modal-edit",
   addPopupSelector: "#modal-add",
+  confirmPopupSelector: "#modal-confirm",
   nameSelector: ".profile__name",
-  jobSelector: ".profile__description",
+  aboutSelector: ".profile__description",
   popupImageContainer: "#modal-image-container",
   cardsContainer: ".elements__list",
   buttonEditSelector: ".profile__button_type_edit",
   buttonAddSelector: ".profile__button_type_add",
+  photoSelector: ".profile__photo",
+  editAvatarPopupSelector: "#modal-edit-avatar",
+  profileAvatarSelector: ".profile__avatar",
 };
 
-export { initialData, validateFormConfigObject, selectors };
+const APIdata = {
+  url: "https://around-api.en.tripleten-services.com/v1",
+  token: "9711a792-8332-4754-8b11-0fe0d4037fb9",
+};
+
+export { initialData, validateFormConfigObject, selectors, APIdata };
