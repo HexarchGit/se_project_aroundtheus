@@ -17,10 +17,11 @@
   border-radius: 50%;
   object-fit: cover;
   transition: opacity 0.5s;
+  opacity: 0;
 }
 
-.profile__photo_placeholder {
-  opacity: 0;
+.profile__photo_state_loaded {
+  opacity: 1;
 }
 
 .profile__edit-icon {

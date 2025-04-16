@@ -60,6 +60,10 @@ export default class Card {
     });
   }
 
+  _showImage() {
+    this._image.classList.add("card__image_state_loaded");
+  }
+
   generateCard() {
     this._cardElement = document
       .querySelector(this._cardSelector)
@@ -68,7 +72,8 @@ export default class Card {
     this._cardElement.querySelector(".card__name").textContent = this._name;
     this._likeButton = this._cardElement.querySelector(".card__button-like");
     this._image = this._cardElement.querySelector(".card__image");
-    // this._image.onload = this._image.classList.remove("card__placeholder");
+    this._image.onload = () => this._showImage();
+    this._image.onerror = () => this._showImage();
     this._image.src = this._link;
     this._image.alt = this._name;
     if (this._liked)

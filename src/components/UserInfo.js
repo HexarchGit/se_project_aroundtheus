@@ -5,6 +5,10 @@ export default class UserInfo {
     this._avatarPhoto = document.querySelector(photoSelector);
   }
 
+  _showImage() {
+    this._avatarPhoto.classList.add("profile__photo_state_loaded");
+  }
+
   getUserInfo() {
     return { name: this._name.textContent, about: this._about.textContent };
   }
@@ -13,6 +17,8 @@ export default class UserInfo {
     this._name.textContent = name;
     this._about.textContent = about;
     if (avatar) {
+      this._avatarPhoto.onload = () => this._showImage();
+      this._avatarPhoto.onerror = () => this._showImage();
       this._avatarPhoto.src = avatar;
     }
   }
