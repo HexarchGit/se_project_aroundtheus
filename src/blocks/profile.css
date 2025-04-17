@@ -125,10 +125,6 @@
     line-height: 1.21;
     max-width: 282px;
   }
-
-  /* .profile__button_type_add {
-    min-width: 75px;
-  } */
 }
 
 @media screen and (max-width: 631px) {
@@ -154,7 +150,7 @@
     gap: 9px;
   }
 
-  .profile_row {
+  .profile__namerow {
     display: flex;
     align-items: center;
     gap: 10px;
